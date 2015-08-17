@@ -6,7 +6,7 @@ TelegramBot.init = false;
 TelegramBot.getUpdatesOffset = 0;
 TelegramBot.interval = false;
 
-var POLLING_INTERVAL = 1000;       // 10s long poll?
+var POLLING_INTERVAL = 10000;       // 10s long poll?
 
 TelegramBot.parseCommandString = function(msg) {
 	// splits string into an array
@@ -21,8 +21,9 @@ TelegramBot.poll = function() {
 	var result = TelegramBot.method("getUpdates", {
 		offset: TelegramBot.getUpdatesOffset + 1,
         // limit: 200,  // just in case
-        // timeout: POLLING_INTERVAL
+        timeout: POLLING_INTERVAL/1000     // in seconds
 	});
+    console.log("poll");
 	TelegramBot.parsePollResult(result.result);
 }
 
