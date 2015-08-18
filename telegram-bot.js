@@ -52,6 +52,11 @@ TelegramBot.parsePollResult = function(data) {
 					TelegramBot.catchAll(item);
 				}
 			}
+		} else {
+			console.log("non text", item);
+			if(typeof(TelegramBot.catchAll) === 'function') {
+				TelegramBot.catchAll(item);
+			}			
 		}
 	});
 }
@@ -85,8 +90,9 @@ TelegramBot.method = function(method, object) {
 			return res.data
 		}
 	}
-	catch (e) {
-		console.log(e)
+	catch (err) {
+		console.error("TelegramBot.method error", err);
+		console.error(method, object);
 	}
 }
 
