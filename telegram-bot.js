@@ -57,7 +57,12 @@ TelegramBot.parsePollResult = function(data) {
 }
 
 TelegramBot.requestUrl = function(method) {
-	var token = TelegramBot.token || process.env.TELEGRAM_TOKEN;
+	var token = TelegramBot.token;
+    if (!token) {
+        // dont pick up from the env
+        console.error("no TelegramBot.token token!")
+        return
+    }
 	return TelegramBot.apiBase + token + '/' + method
 }
 
