@@ -53,7 +53,7 @@ TelegramBot.parsePollResult = function(data) {
 				}
 			}
 		} else {
-			console.log("non text", item);
+			// console.log("non text", item);
 			if(typeof(TelegramBot.catchAll) === 'function') {
 				TelegramBot.catchAll(item);
 			}			
