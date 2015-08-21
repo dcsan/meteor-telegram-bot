@@ -1,3 +1,5 @@
+/*global TelegramBot:true*/
+
 TelegramBot = {};
 TelegramBot.triggers = [];
 TelegramBot.apiBase = "https://api.telegram.org/bot";
@@ -23,7 +25,9 @@ TelegramBot.poll = function() {
         // limit: 200,  // just in case
         // timeout: POLLING_INTERVAL
 	});
-	TelegramBot.parsePollResult(result.result);
+	if (result) {
+		TelegramBot.parsePollResult(result.result);
+	}
 }
 
 TelegramBot.start = function() {
